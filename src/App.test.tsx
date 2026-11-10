@@ -106,23 +106,9 @@ describe('skill-evidence interaction', () => {
     const user = userEvent.setup();
     render(<App />);
     const entry = article(/AI Agents for Farkle/);
-    await user.click(within(entry).getByText(/multi-agent environment for the Farkle/));
-    expect(bulletTexts(entry)).toHaveLength(3);
+    await user.click(within(entry).getByText(/Reinforcement-learning agents for the Farkle/));
+    expect(bulletTexts(entry)).toHaveLength(4);
     await user.click(within(entry).getByRole('link'));
-    expect(bulletTexts(entry)).toHaveLength(3);
-  });
-});
-
-describe('theme', () => {
-  it('persists the chosen theme across a reload (A8)', async () => {
-    const user = userEvent.setup();
-    const { unmount } = render(<App />);
-    await user.click(screen.getByRole('button', { name: 'Switch to dark theme' }));
-    expect(document.documentElement.dataset.theme).toBe('dark');
-    unmount();
-    delete document.documentElement.dataset.theme;
-    render(<App />);
-    expect(screen.getByRole('button', { name: 'Switch to light theme' })).toBeInTheDocument();
-    expect(document.documentElement.dataset.theme).toBe('dark');
+    expect(bulletTexts(entry)).toHaveLength(4);
   });
 });

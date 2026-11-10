@@ -11,6 +11,7 @@ export const skills = [
   { id: 'cpp', label: 'C++', group: 'Languages' },
   { id: 'typescript', label: 'TypeScript', group: 'Languages' },
   { id: 'sql', label: 'SQL', group: 'Languages' },
+  { id: 'r', label: 'R', group: 'Languages' },
 
   { id: 'react', label: 'React', group: 'Software & systems' },
   { id: 'web-apis', label: 'Web APIs', group: 'Software & systems' },
@@ -23,7 +24,7 @@ export const skills = [
   { id: 'llm-applications', label: 'LLM applications', group: 'Data & AI' },
   { id: 'time-series', label: 'Time-series forecasting', group: 'Data & AI' },
   { id: 'data-analysis', label: 'Data analysis', group: 'Data & AI' },
-  { id: 'simulation', label: 'Simulation & statistics', group: 'Data & AI' },
+  { id: 'simulation', label: 'Statistics & simulation', group: 'Data & AI' },
 
   { id: 'testing', label: 'Testing', group: 'Engineering practice' },
   { id: 'teamwork', label: 'Agile teamwork', group: 'Engineering practice' },
