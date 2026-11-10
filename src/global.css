@@ -32,7 +32,7 @@
   --gutter: clamp(16px, 4vw, 32px);
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --fade: 200ms;
-  --reveal: 260ms;
+  --reveal: 180ms;
 }
 
 :root[data-theme='light'] {

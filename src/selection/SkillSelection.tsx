@@ -21,7 +21,7 @@ const PARAM = 'skill';
 /** Delay before a preview ends, so moving between adjacent skills doesn't flicker. */
 const LEAVE_DELAY_MS = 80;
 /** How long a preview must last before its bullets expand. */
-export const REVEAL_DELAY_MS = 600;
+export const REVEAL_DELAY_MS = 300;
 
 function readPinnedFromUrl(): SkillId | null {
   const value = new URLSearchParams(window.location.search).get(PARAM);
