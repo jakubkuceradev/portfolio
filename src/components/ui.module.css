@@ -56,14 +56,14 @@
 
 .buttonPrimary {
   composes: button;
-  background: var(--indigo);
-  border-color: var(--indigo);
+  background: var(--accent);
+  border-color: var(--accent);
   color: #fff;
 }
 
 .buttonPrimary:hover {
-  background: var(--indigo-hover);
-  border-color: var(--indigo-hover);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 
 .textLink {

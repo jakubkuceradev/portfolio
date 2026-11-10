@@ -5,7 +5,7 @@ import type { Entry } from './types';
  * written to show the layout. Replace it with real courses before relying on it.
  */
 const bachelors = "FIT CTU · Bachelor's, AI specialization";
-const masters = "FIT CTU · Master's, Systems & Networks";
+const masters = "FIT CTU · Master's, Systems";
 
 export const coursework: readonly Entry[] = [
   {

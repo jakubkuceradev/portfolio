@@ -1,7 +1,7 @@
 /*
  * Design tokens and element defaults. Visual language follows the Prague Quant
  * Club participant site: near-black surfaces, square bordered panels, mono
- * uppercase labels, indigo accent. Dark only.
+ * uppercase labels, deep-blue accent. Dark only.
  */
 :root {
   color-scheme: dark;
@@ -14,11 +14,11 @@
   --dimmed: #8a8fa1;
   --border: #232631;
   --border-strong: #3a3e4e;
-  --indigo: #5b5bf0;
-  --indigo-hover: #4a4ad9;
-  --accent-text: #aaa9ff;
-  --highlight-bg: #5b5bf013;
-  --highlight-border: #5b5bf045;
+  --accent: #2f62e0;
+  --accent-hover: #2752c4;
+  --accent-text: #8fb4ff;
+  --highlight-bg: #2f62e014;
+  --highlight-border: #2f62e066;
 
   --mono: 'JetBrains Mono', 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
   --body: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -100,7 +100,7 @@ a {
 }
 
 ::selection {
-  background: #5b5bf066;
+  background: #2f62e066;
 }
 
 .visually-hidden {

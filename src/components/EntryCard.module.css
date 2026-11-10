@@ -160,7 +160,7 @@
 }
 
 .bullet[data-highlighted]::before {
-  background: var(--indigo);
+  background: var(--accent);
 }
 
 @media (max-width: 480px) {

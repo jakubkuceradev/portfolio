@@ -71,7 +71,7 @@
 
 .skill[aria-pressed='true'] {
   background: var(--highlight-bg);
-  border-color: var(--indigo);
+  border-color: var(--accent);
 }
 
 .pinTag {

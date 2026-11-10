@@ -21,7 +21,7 @@
   left: 16px;
   z-index: 30;
   padding: 10px 16px;
-  background: var(--indigo);
+  background: var(--accent);
   color: #fff;
   font: 13px var(--mono);
 }
