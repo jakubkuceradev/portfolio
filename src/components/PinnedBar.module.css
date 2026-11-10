@@ -1,0 +1,31 @@
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 0.5rem var(--gutter);
+  background: var(--bg-raised);
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+
+.clear {
+  padding: 0.2rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+@media (min-width: 56.25em) {
+  .bar {
+    display: none;
+  }
+}

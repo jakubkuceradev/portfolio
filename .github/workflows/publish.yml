@@ -21,11 +21,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check static site files
+      # Typecheck, tests and the Vite build run inside the Docker build.
+      - name: Check build inputs
         run: |
+          test -s package.json
+          test -s package-lock.json
           test -s index.html
-          test -s styles.css
-          test -s script.js
+          test -s Caddyfile
           test -f Dockerfile
 
       - name: Set up Docker Buildx

@@ -1,0 +1,88 @@
+/*
+ * Design tokens. Each colour is defined once with light-dark(); the scheme comes
+ * from the OS unless <html data-theme> holds the visitor's explicit choice.
+ * Contrast targets: --text-muted and --text-dimmed ≥ 4.5:1 on --bg and --bg-raised.
+ */
+:root {
+  color-scheme: light dark;
+
+  --bg: light-dark(#fbfaf7, #14171b);
+  --bg-raised: light-dark(#f2f0ea, #1c2026);
+  --text: light-dark(#1b1d21, #e6e4df);
+  --text-muted: light-dark(#585a60, #a5a8ad);
+  --text-dimmed: light-dark(#6b6d72, #8e9196);
+  --rule: light-dark(#dcd8ce, #2e333a);
+  --accent: light-dark(#1d4f80, #8cbcec);
+  --accent-soft: light-dark(#e3ecf5, #1d2a38);
+  --focus: light-dark(#1d4f80, #8cbcec);
+
+  --font-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --duration: 160ms;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration: 0ms;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-serif);
+  line-height: 1.25;
+}
+
+a {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

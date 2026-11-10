@@ -1,0 +1,99 @@
+.entry {
+  position: relative;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 2px solid transparent;
+  transition:
+    color var(--duration),
+    border-color var(--duration);
+}
+
+.entry[data-emphasis='related'] {
+  border-left-color: var(--accent);
+}
+
+/* De-emphasised entries keep readable contrast: muted colour, not transparency. */
+.entry[data-emphasis='dimmed'],
+.entry[data-emphasis='dimmed'] .context,
+.entry[data-emphasis='dimmed'] .date,
+.entry[data-emphasis='dimmed'] .titleLink {
+  color: var(--text-dimmed);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0 1rem;
+}
+
+.titles {
+  min-width: 0;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.titleLink {
+  color: inherit;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 0.2em;
+}
+
+.titleLink:hover {
+  text-decoration-color: currentColor;
+}
+
+.context {
+  margin: 0.1rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.date {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.summary {
+  margin: 0.4rem 0 0;
+}
+
+.bullets {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.bullet {
+  margin-top: 0.25rem;
+  padding: 0 0.25rem;
+  border-radius: 2px;
+}
+
+.bullet::marker {
+  color: var(--text-muted);
+}
+
+.bullet[data-highlighted] {
+  background: var(--accent-soft);
+}
+
+.toggle {
+  margin-top: 0.35rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}

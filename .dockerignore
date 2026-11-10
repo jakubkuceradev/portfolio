@@ -1,5 +1,6 @@
 .git
 .github
+node_modules
+dist
 vm
-README.md
 *.md

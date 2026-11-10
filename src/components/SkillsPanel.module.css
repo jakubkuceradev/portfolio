@@ -1,0 +1,67 @@
+.heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2rem;
+}
+
+.title {
+  font-size: 1.35rem;
+}
+
+.clear {
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.clear:hover {
+  color: var(--text);
+  background: var(--bg-raised);
+}
+
+.hint {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.group {
+  margin-top: 1.25rem;
+}
+
+.groupTitle {
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.list,
+.plainList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plainList {
+  font-size: 0.95rem;
+}
+
+/* Narrow screens: skills wrap as chips above the content. */
+@media (max-width: 56.24em) {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+}
