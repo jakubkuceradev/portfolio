@@ -20,7 +20,12 @@ export function SkillButton({ skill }: { skill: Skill }) {
       onBlur={() => preview(null)}
       onClick={() => togglePin(skill.id)}
     >
-      {skill.label}
+      <span>{skill.label}</span>
+      {isPinned && (
+        <span className={classes.pinTag} aria-hidden="true">
+          Pinned
+        </span>
+      )}
     </button>
   );
 }
