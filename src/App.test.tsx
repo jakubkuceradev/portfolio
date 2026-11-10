@@ -2,9 +2,12 @@ import { act, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { App } from './App';
+import { REVEAL_DELAY_MS } from './selection/SkillSelection';
 
 const article = (title: RegExp) => screen.getByRole('heading', { level: 3, name: title }).closest('article')!;
 const skill = (name: string) => screen.getByRole('button', { name });
+const renderedBullets = (el: HTMLElement) =>
+  within(el).queryAllByRole('listitem', { hidden: true }).map((li) => li.textContent);
 const bulletTexts = (el: HTMLElement) => within(el).queryAllByRole('listitem').map((li) => li.textContent);
 
 describe('skill-evidence interaction', () => {
@@ -14,18 +17,35 @@ describe('skill-evidence interaction', () => {
     expect(article(/Software Engineer/)).toHaveAttribute('data-emphasis', 'neutral');
   });
 
-  it('hover previews a skill and leaving restores the default (A3)', async () => {
+  it('hover emphasises at once, expands only after a dwell, and leaving restores (A3)', async () => {
     vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
     render(<App />);
     await user.hover(skill('Docker'));
-    expect(bulletTexts(article(/Software Engineer/))).toEqual([expect.stringMatching(/Docker/)]);
     expect(article(/Software Engineer/)).toHaveAttribute('data-emphasis', 'related');
     expect(article(/Winning Team Member/)).toHaveAttribute('data-emphasis', 'dimmed');
+    expect(bulletTexts(article(/Software Engineer/))).toEqual([]);
+
+    await act(() => vi.advanceTimersByTimeAsync(REVEAL_DELAY_MS));
+    // Rendered (Collapse may still be animating open under fake timers).
+    expect(renderedBullets(article(/Software Engineer/))).toEqual([expect.stringMatching(/Docker/)]);
 
     await user.unhover(skill('Docker'));
     await act(() => vi.advanceTimersByTimeAsync(200));
     expect(article(/Software Engineer/)).toHaveAttribute('data-emphasis', 'neutral');
+    vi.useRealTimers();
+    await waitFor(() => expect(bulletTexts(article(/Software Engineer/))).toEqual([]));
+  });
+
+  it('a passing hover never expands anything', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    render(<App />);
+    await user.hover(skill('Docker'));
+    await act(() => vi.advanceTimersByTimeAsync(REVEAL_DELAY_MS / 2));
+    await user.unhover(skill('Docker'));
+    await act(() => vi.advanceTimersByTimeAsync(REVEAL_DELAY_MS * 2));
+    expect(renderedBullets(article(/Software Engineer/))).toEqual([]);
     vi.useRealTimers();
   });
 

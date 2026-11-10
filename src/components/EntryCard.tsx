@@ -7,10 +7,12 @@ import { entryView, type EntryView } from '../selection/entryView';
 import { ExternalLink } from './ExternalLink';
 import classes from './EntryCard.module.css';
 
+const COLLAPSE_MS = 320;
+
 export function EntryCard({ entry }: { entry: Entry }) {
-  const { active } = useSkillSelection();
+  const { active, revealed } = useSkillSelection();
   const [expanded, { toggle }] = useDisclosure(false);
-  const view = useMemo(() => entryView(entry, active, expanded), [entry, active, expanded]);
+  const view = useMemo(() => entryView(entry, active, revealed, expanded), [entry, active, revealed, expanded]);
   const shown = useRetainedBullets(view.bullets);
   const bulletsId = useId();
 
@@ -35,7 +37,7 @@ export function EntryCard({ entry }: { entry: Entry }) {
 
       {entry.summary && <p className={classes.summary}>{entry.summary}</p>}
 
-      <Collapse expanded={view.bullets.length > 0} transitionDuration={160} id={bulletsId}>
+      <Collapse expanded={view.bullets.length > 0} transitionDuration={COLLAPSE_MS} id={bulletsId}>
         <ul className={classes.bullets}>
           {shown.map(({ bullet, highlighted }) => (
             <li key={bullet.text} className={classes.bullet} data-highlighted={highlighted || undefined}>
