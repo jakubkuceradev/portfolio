@@ -21,13 +21,10 @@ export function SkillsPanel() {
 
   return (
     <div className={`${ui.panel} ${classes.panel}`}>
-      <div className={`${ui.panelHeading} ${classes.heading}`}>
-        <div>
-          <span className={ui.eyebrow}>01 / Skills</span>
-          <h2 id="skills-heading" className={ui.tagline}>
-            Evidence, not keywords.
-          </h2>
-        </div>
+      <div className={classes.heading}>
+        <h2 id="skills-heading" className={`${ui.eyebrow} ${ui.panelTitle}`}>
+          <span aria-hidden="true">01 / </span>Skills
+        </h2>
         <p className={classes.hint}>Hover to preview, click to pin.</p>
         <button
           type="button"

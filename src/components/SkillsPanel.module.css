@@ -4,20 +4,19 @@
 
 .heading {
   position: relative;
-  padding-top: 18px;
-  padding-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .hint {
-  margin-top: 2px;
+  padding: 8px 20px 0;
   color: var(--muted);
   font-size: 13px;
 }
 
 .clear {
   position: absolute;
-  top: 18px;
-  right: 24px;
+  top: 12px;
+  right: 20px;
 }
 
 .clear[hidden] {
@@ -26,7 +25,7 @@
 }
 
 .group {
-  padding: 0 14px;
+  padding: 0 10px;
 }
 
 

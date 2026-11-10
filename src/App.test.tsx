@@ -90,13 +90,26 @@ describe('skill-evidence interaction', () => {
     expect(window.location.search).toBe('');
   });
 
-  it('reads full bullets without choosing a skill (A7)', async () => {
+  it('reads full bullets without choosing a skill via the title button (A7)', async () => {
     const user = userEvent.setup();
     render(<App />);
     const entry = article(/Winning Team Member/);
-    await user.click(within(entry).getByRole('button', { name: /\+ Details/ }));
+    const toggle = within(entry).getByRole('button', { name: /Winning Team Member/ });
+    await user.click(toggle);
     expect(bulletTexts(entry)).toHaveLength(4);
-    expect(within(entry).getByRole('button', { name: /Hide details/ })).toHaveAttribute('aria-expanded', 'true');
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    await user.click(toggle);
+    expect(bulletTexts(entry)).toEqual([]);
+  });
+
+  it('toggles an entry when clicking anywhere on the row, but not on its link', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    const entry = article(/AI Agents for Farkle/);
+    await user.click(within(entry).getByText(/multi-agent environment for the Farkle/));
+    expect(bulletTexts(entry)).toHaveLength(3);
+    await user.click(within(entry).getByRole('link'));
+    expect(bulletTexts(entry)).toHaveLength(3);
   });
 });
 

@@ -2,6 +2,4 @@
   scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
-.entries {
-  border-top: 1px solid var(--border);
-}
+

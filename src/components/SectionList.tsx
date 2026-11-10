@@ -11,15 +11,10 @@ export function SectionList() {
       className={`${ui.panel} ${classes.section}`}
       aria-labelledby={`section-${section.id}`}
     >
-      <div className={ui.panelHeading}>
-        <span className={ui.eyebrow}>
-          {String(index + 2).padStart(2, '0')} / {section.title}
-        </span>
-        <h2 id={`section-${section.id}`} className={ui.tagline}>
-          <span className="visually-hidden">{section.title}: </span>
-          {section.tagline}
-        </h2>
-      </div>
+      <h2 id={`section-${section.id}`} className={`${ui.eyebrow} ${ui.panelTitle}`}>
+        <span aria-hidden="true">{String(index + 2).padStart(2, '0')} / </span>
+        {section.title}
+      </h2>
       <div className={classes.entries}>
         {section.entries.map((entry) => (
           <EntryCard key={entry.id} entry={entry} />
