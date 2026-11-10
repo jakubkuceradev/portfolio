@@ -1,5 +1,16 @@
 .hero {
-  padding: 64px 0 32px;
+  padding: 48px 0 32px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.top > p {
+  margin: 0;
 }
 
 .name {
@@ -67,7 +78,7 @@
 
 @media (max-width: 480px) {
   .hero {
-    padding-top: 40px;
+    padding-top: 24px;
   }
 
   .actions > * {

@@ -22,13 +22,11 @@
   --highlight-border: light-dark(#5b5bf04d, #5b5bf045);
   --grid-line: light-dark(#0b0d1408, #ffffff05);
   --glow: light-dark(#5b5bf010, #5b5bf00e);
-  --header-bg: light-dark(rgb(244 245 249 / 0.72), rgb(7 8 12 / 0.65));
 
   --mono: 'JetBrains Mono', 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
   --body: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --heading: 'Space Grotesk', var(--body);
 
-  --header-height: 64px;
   --gutter: clamp(16px, 4vw, 32px);
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --fade: 200ms;
@@ -58,7 +56,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-padding-top: calc(var(--header-height) + 16px);
+  scroll-padding-top: 16px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -1,6 +1,5 @@
 import { HeadlessMantineProvider } from '@mantine/core';
 import { Footer } from './components/Footer';
-import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { PinnedBar } from './components/PinnedBar';
 import { SectionList } from './components/SectionList';
@@ -15,7 +14,6 @@ export function App() {
         <a className={classes.skipLink} href="#experience">
           Skip to experience
         </a>
-        <Header />
         <PinnedBar />
         <main className={classes.page}>
           <Hero />

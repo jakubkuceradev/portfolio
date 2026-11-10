@@ -1,12 +1,16 @@
 import { profile } from '../content';
 import { ExternalLink } from './ExternalLink';
+import { ThemeToggle } from './ThemeToggle';
 import ui from './ui.module.css';
 import classes from './Hero.module.css';
 
 export function Hero() {
   return (
     <section className={classes.hero} id="top" aria-labelledby="hero-name">
-      <p className={ui.eyebrowAccent}>{profile.role}</p>
+      <div className={classes.top}>
+        <p className={ui.eyebrowAccent}>{profile.role}</p>
+        <ThemeToggle />
+      </div>
       <h1 id="hero-name" className={classes.name}>
         {profile.name}
       </h1>

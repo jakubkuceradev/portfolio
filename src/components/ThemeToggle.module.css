@@ -1,0 +1,14 @@
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  font-size: 15px;
+  transition: border-color var(--fade);
+}
+
+.toggle:hover {
+  border-color: var(--text);
+}
