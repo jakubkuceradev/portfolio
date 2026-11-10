@@ -26,5 +26,7 @@ export type SectionId = 'experience' | 'projects' | 'coursework';
 export type Section = {
   id: SectionId;
   title: string;
+  /** Short line under the section label. */
+  tagline: string;
   entries: readonly Entry[];
 };

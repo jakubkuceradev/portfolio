@@ -1,0 +1,87 @@
+/* Shared primitives from the reference design: panels, mono labels, buttons. */
+.panel {
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.panelHeading {
+  padding: 22px 24px 18px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  font: 500 11px / 1.6 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eyebrowAccent {
+  composes: eyebrow;
+  color: var(--accent-text);
+}
+
+.tagline {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.4;
+}
+
+.label {
+  font: 11px / 1.6 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border: 1px solid light-dark(rgb(18 20 27 / 0.25), rgb(255 255 255 / 0.25));
+  background: transparent;
+  color: var(--text);
+  font: 13px / 1.5 var(--mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition:
+    background-color var(--fade),
+    border-color var(--fade);
+}
+
+.button:hover {
+  background: light-dark(rgb(18 20 27 / 0.05), rgb(255 255 255 / 0.06));
+  border-color: var(--text);
+}
+
+.buttonPrimary {
+  composes: button;
+  background: var(--indigo);
+  border-color: var(--indigo);
+  color: #fff;
+}
+
+.buttonPrimary:hover {
+  background: var(--indigo-hover);
+  border-color: var(--indigo-hover);
+}
+
+.textLink {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent-text);
+  font: 11px / 1.6 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.textLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

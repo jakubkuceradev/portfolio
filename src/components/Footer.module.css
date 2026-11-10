@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px max(var(--gutter), calc((100vw - 1200px) / 2 + var(--gutter)));
+  border-top: 1px solid var(--border);
+}
+
+.name {
+  font: 600 14px var(--heading);
+}
+
+.links {
+  display: flex;
+  gap: 32px;
+  font: 12px var(--mono);
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.links a:hover {
+  color: var(--text);
+}

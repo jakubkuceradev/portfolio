@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor, within } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { App } from './App';
@@ -6,8 +6,6 @@ import { REVEAL_DELAY_MS } from './selection/SkillSelection';
 
 const article = (title: RegExp) => screen.getByRole('heading', { level: 3, name: title }).closest('article')!;
 const skill = (name: string) => screen.getByRole('button', { name });
-const renderedBullets = (el: HTMLElement) =>
-  within(el).queryAllByRole('listitem', { hidden: true }).map((li) => li.textContent);
 const bulletTexts = (el: HTMLElement) => within(el).queryAllByRole('listitem').map((li) => li.textContent);
 
 describe('skill-evidence interaction', () => {
@@ -27,14 +25,13 @@ describe('skill-evidence interaction', () => {
     expect(bulletTexts(article(/Software Engineer/))).toEqual([]);
 
     await act(() => vi.advanceTimersByTimeAsync(REVEAL_DELAY_MS));
-    // Rendered (Collapse may still be animating open under fake timers).
-    expect(renderedBullets(article(/Software Engineer/))).toEqual([expect.stringMatching(/Docker/)]);
+    expect(bulletTexts(article(/Software Engineer/))).toEqual([expect.stringMatching(/Docker/)]);
 
     await user.unhover(skill('Docker'));
     await act(() => vi.advanceTimersByTimeAsync(200));
     expect(article(/Software Engineer/)).toHaveAttribute('data-emphasis', 'neutral');
+    expect(bulletTexts(article(/Software Engineer/))).toEqual([]);
     vi.useRealTimers();
-    await waitFor(() => expect(bulletTexts(article(/Software Engineer/))).toEqual([]));
   });
 
   it('a passing hover never expands anything', async () => {
@@ -45,7 +42,7 @@ describe('skill-evidence interaction', () => {
     await act(() => vi.advanceTimersByTimeAsync(REVEAL_DELAY_MS / 2));
     await user.unhover(skill('Docker'));
     await act(() => vi.advanceTimersByTimeAsync(REVEAL_DELAY_MS * 2));
-    expect(renderedBullets(article(/Software Engineer/))).toEqual([]);
+    expect(bulletTexts(article(/Software Engineer/))).toEqual([]);
     vi.useRealTimers();
   });
 
@@ -97,8 +94,8 @@ describe('skill-evidence interaction', () => {
     const user = userEvent.setup();
     render(<App />);
     const entry = article(/Winning Team Member/);
-    await user.click(within(entry).getByRole('button', { name: /Show details/ }));
-    await waitFor(() => expect(bulletTexts(entry)).toHaveLength(4));
+    await user.click(within(entry).getByRole('button', { name: /\+ Details/ }));
+    expect(bulletTexts(entry)).toHaveLength(4);
     expect(within(entry).getByRole('button', { name: /Hide details/ })).toHaveAttribute('aria-expanded', 'true');
   });
 });

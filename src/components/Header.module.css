@@ -1,72 +1,77 @@
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 3rem 0 2rem;
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid var(--rule);
+  align-items: center;
+  gap: 40px;
+  height: var(--header-height);
+  padding: 0 max(var(--gutter), calc((100vw - 1200px) / 2 + var(--gutter)));
+  border-bottom: 1px solid var(--border);
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
 }
 
-.identity {
-  min-width: 0;
-  max-width: 44rem;
-}
-
-.name {
-  font-size: clamp(2rem, 6vw, 2.75rem);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.role {
-  margin: 0.25rem 0 0;
-  color: var(--text-muted);
-  font-size: 0.95rem;
+.brand {
+  font: 500 16px var(--mono);
   letter-spacing: 0.04em;
-  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.intro {
-  margin: 1rem 0 0;
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
+.cursor {
+  color: var(--indigo);
 }
 
-.links {
+.nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-  margin: 1.25rem 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0.95rem;
+  align-self: stretch;
+  gap: 32px;
+  margin-left: auto;
 }
 
-.link {
-  text-decoration: none;
+.nav a {
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  font: 12px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--fade);
 }
 
-.link:hover {
-  text-decoration: underline;
-}
-
-.linkLabel {
-  color: var(--text-muted);
+.nav a:hover {
+  color: var(--text);
 }
 
 .themeToggle {
-  flex: none;
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 1px solid var(--rule);
-  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-left: auto;
+  border: 1px solid var(--border-strong);
   background: transparent;
-  color: var(--text);
-  font-size: 1.1rem;
-  cursor: pointer;
+  font-size: 15px;
+  transition:
+    background-color var(--fade),
+    border-color var(--fade);
+}
+
+.nav + .themeToggle {
+  margin-left: 0;
 }
 
 .themeToggle:hover {
-  background: var(--bg-raised);
+  border-color: var(--text);
+}
+
+@media (max-width: 760px) {
+  .nav {
+    display: none;
+  }
+
+  .nav + .themeToggle {
+    margin-left: auto;
+  }
 }

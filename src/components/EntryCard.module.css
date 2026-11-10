@@ -1,99 +1,139 @@
 .entry {
-  position: relative;
-  padding: 0.25rem 0 0.25rem 1rem;
-  border-left: 2px solid transparent;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
   transition:
-    color var(--duration),
-    border-color var(--duration);
+    background-color var(--fade) var(--ease),
+    box-shadow var(--fade) var(--ease);
 }
 
+.entry:last-child {
+  border-bottom: 0;
+}
+
+/* Emphasis never changes layout: tint + inset bar, colour shifts only. */
 .entry[data-emphasis='related'] {
-  border-left-color: var(--accent);
-}
-
-/* De-emphasised entries keep readable contrast: muted colour, not transparency. */
-.entry[data-emphasis='dimmed'],
-.entry[data-emphasis='dimmed'] .context,
-.entry[data-emphasis='dimmed'] .date,
-.entry[data-emphasis='dimmed'] .titleLink {
-  color: var(--text-dimmed);
+  background: var(--highlight-bg);
+  box-shadow: inset 2px 0 0 var(--indigo);
 }
 
 .head {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 16px;
   align-items: baseline;
-  gap: 0 1rem;
-}
-
-.titles {
-  min-width: 0;
 }
 
 .title {
-  font-size: 1.1rem;
+  font-size: 17px;
   font-weight: 600;
-}
-
-.titleLink {
-  color: inherit;
-  text-decoration-color: var(--rule);
-  text-underline-offset: 0.2em;
+  letter-spacing: -0.2px;
+  line-height: 1.4;
+  transition: color var(--fade) var(--ease);
 }
 
 .titleLink:hover {
-  text-decoration-color: currentColor;
+  color: var(--accent-text);
 }
 
-.context {
-  margin: 0.1rem 0 0;
-  color: var(--text-muted);
-  font-size: 0.95rem;
+.arrow {
+  margin-left: 6px;
+  color: var(--accent-text);
+  font-size: 0.9em;
 }
 
 .date {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  font: 11.5px / 1.6 var(--mono);
+  letter-spacing: 0.04em;
   white-space: nowrap;
 }
 
+.context {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .summary {
-  margin: 0.4rem 0 0;
+  margin-top: 8px;
+  font-size: 14.5px;
+  transition: color var(--fade) var(--ease);
+}
+
+/* De-emphasised entries keep readable contrast: muted colour, not transparency. */
+.entry[data-emphasis='dimmed'] :is(.title, .summary, .context, .date, .arrow) {
+  color: var(--dimmed);
+}
+
+.reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--reveal) var(--ease);
+}
+
+.reveal[data-open] {
+  grid-template-rows: 1fr;
+}
+
+.revealInner {
+  min-height: 0;
+  overflow: hidden;
 }
 
 .bullets {
-  margin: 0.5rem 0 0;
-  padding-left: 1.1rem;
+  padding: 12px 0 2px;
+  list-style: none;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity calc(var(--reveal) * 0.6) var(--ease),
+    transform calc(var(--reveal) * 0.6) var(--ease);
+}
+
+.reveal[data-open] .bullets {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--reveal) * 0.35);
 }
 
 .bullet {
-  margin-top: 0.25rem;
-  padding: 0 0.25rem;
-  border-radius: 2px;
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  transition: color var(--fade) var(--ease);
 }
 
-.bullet::marker {
-  color: var(--text-muted);
+.bullet + .bullet {
+  margin-top: 6px;
 }
 
-.bullet[data-highlighted] {
-  background: var(--accent-soft);
+.bullet::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  background: var(--border-strong);
+  transition: background-color var(--fade) var(--ease);
+}
+
+.entry[data-emphasis='related'] .bullet:not([data-highlighted]),
+.entry[data-emphasis='dimmed'] .bullet {
+  color: var(--muted);
+}
+
+.bullet[data-highlighted]::before {
+  background: var(--indigo);
 }
 
 .toggle {
-  margin-top: 0.35rem;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--accent);
-  font: inherit;
-  font-size: 0.875rem;
-  cursor: pointer;
+  margin-top: 10px;
 }
 
-.toggle:hover {
-  text-decoration: underline;
+@media (max-width: 480px) {
+  .entry {
+    padding: 18px 16px;
+  }
 }

@@ -1,13 +1,19 @@
 export const profile = {
   name: 'Jakub Kučera',
-  role: 'Software engineer · Prague',
+  handle: 'jakub.kucera',
+  role: 'Software engineer · Prague, CZ',
   intro:
     'I build practical software, from robotics systems and AI applications to web products. Studying Informatics at FIT CTU and working at ententee.',
+  email: 'jakubkuceradev@gmail.com',
   links: [
-    { label: 'Email', href: 'mailto:jakubkuceradev@gmail.com', text: 'jakubkuceradev@gmail.com' },
-    { label: 'GitHub', href: 'https://github.com/jakubkuceradev', text: 'github.com/jakubkuceradev' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jakubkuceradev/', text: 'in/jakubkuceradev' },
+    { label: 'GitHub', href: 'https://github.com/jakubkuceradev' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jakubkuceradev/' },
   ],
-  /** Shown as plain text, not interactive skills. */
-  spokenLanguages: ['Czech (native)', 'English (C2, Cambridge CAE)'],
+  /** Quick facts strip under the intro. Spoken languages live here as plain text. */
+  facts: [
+    { label: 'Currently', value: 'Software Engineer', note: 'ententee s.r.o. · since Jul 2025' },
+    { label: 'Studying', value: "Master's in Informatics", note: 'FIT CTU · since Sep 2026' },
+    { label: 'Previously', value: "Bachelor's, AI", note: 'FIT CTU · 2023 – 2026' },
+    { label: 'Languages', value: 'Czech · English', note: 'Native · C2 (Cambridge CAE)' },
+  ],
 } as const;

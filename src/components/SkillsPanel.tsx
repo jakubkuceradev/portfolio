@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { profile, skillById, skillGroups, skills } from '../content';
+import { skillById, skillGroups, skills, type SkillId } from '../content';
 import { useSkillSelection } from '../selection/SkillSelection';
 import { SkillButton } from './SkillButton';
+import ui from './ui.module.css';
 import classes from './SkillsPanel.module.css';
 
 export function SkillsPanel() {
@@ -19,22 +20,28 @@ export function SkillsPanel() {
   }, [pinned, clear]);
 
   return (
-    <div className={classes.panel}>
-      <div className={classes.heading}>
-        <h2 id="skills-heading" className={classes.title}>
-          Skills
-        </h2>
-        {pinned && (
-          <button type="button" className={classes.clear} onClick={clear}>
-            Clear<span className="visually-hidden"> selected skill</span>
-          </button>
-        )}
+    <div className={`${ui.panel} ${classes.panel}`}>
+      <div className={`${ui.panelHeading} ${classes.heading}`}>
+        <div>
+          <span className={ui.eyebrow}>01 / Skills</span>
+          <h2 id="skills-heading" className={ui.tagline}>
+            Evidence, not keywords.
+          </h2>
+        </div>
+        <p className={classes.hint}>Hover to preview, click to pin.</p>
+        <button
+          type="button"
+          className={`${ui.textLink} ${classes.clear}`}
+          onClick={clear}
+          hidden={!pinned}
+        >
+          Clear ×<span className="visually-hidden"> selected skill</span>
+        </button>
       </div>
-      <p className={classes.hint}>Pick a skill to see where I used it.</p>
 
       {skillGroups.map((group) => (
         <section key={group} className={classes.group} aria-labelledby={`skills-${slug(group)}`}>
-          <h3 id={`skills-${slug(group)}`} className={classes.groupTitle}>
+          <h3 id={`skills-${slug(group)}`} className={`${ui.label} ${classes.groupTitle}`}>
             {group}
           </h3>
           <ul className={classes.list}>
@@ -49,17 +56,6 @@ export function SkillsPanel() {
         </section>
       ))}
 
-      <section className={classes.group} aria-labelledby="skills-spoken">
-        <h3 id="skills-spoken" className={classes.groupTitle}>
-          Spoken languages
-        </h3>
-        <ul className={classes.plainList}>
-          {profile.spokenLanguages.map((l) => (
-            <li key={l}>{l}</li>
-          ))}
-        </ul>
-      </section>
-
       <p className="visually-hidden" aria-live="polite">
         {announcement}
       </p>
@@ -68,7 +64,7 @@ export function SkillsPanel() {
 }
 
 /** Announces pin changes (not previews) so screen-reader users hear the result of a selection. */
-function usePinAnnouncement(pinned: ReturnType<typeof useSkillSelection>['pinned']) {
+function usePinAnnouncement(pinned: SkillId | null) {
   const [message, setMessage] = useState('');
   const previous = useRef(pinned);
   useEffect(() => {

@@ -23,3 +23,7 @@ All content is data under `src/content/`:
 ## Deploy
 
 `docker build .` runs the full build (tests included) and produces a Caddy image serving `dist/` on port 80. GitHub Actions publishes `ghcr.io/jakubkuceradev/portfolio:main` and `:<sha>` (linux/arm64) on every push to `main`.
+
+## Design and fonts
+
+The visual language (tokens in `src/global.css`, shared primitives in `src/components/ui.module.css`) follows the Prague Quant Club participant site. Inter, Space Grotesk and JetBrains Mono are self-hosted from `src/fonts/` under the SIL Open Font License; the licence texts ship in `public/licenses/fonts/`.

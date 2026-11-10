@@ -10,9 +10,9 @@ export type { Skill, SkillId, SkillGroup } from './skills';
 export type { Bullet, Entry, Section, SectionId } from './types';
 
 export const sections: readonly Section[] = [
-  { id: 'experience', title: 'Experience', entries: experience },
-  { id: 'projects', title: 'Projects', entries: projects },
-  { id: 'coursework', title: 'Coursework', entries: coursework },
+  { id: 'experience', title: 'Experience', tagline: 'Where the work happened.', entries: experience },
+  { id: 'projects', title: 'Projects', tagline: 'Things I built on my own.', entries: projects },
+  { id: 'coursework', title: 'Coursework', tagline: 'What the degree covered.', entries: coursework },
 ];
 
 const byId = new Map<string, Skill>(skills.map((s) => [s.id, s]));

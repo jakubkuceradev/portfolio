@@ -4,8 +4,8 @@ import type { Entry } from './types';
  * PLACEHOLDER CONTENT. Every entry below is sample coursework (`placeholder: true`)
  * written to show the layout. Replace it with real courses before relying on it.
  */
-const bachelors = "FIT CTU · Bachelor's in Informatics, AI (Sep 2023 – Jun 2026)";
-const masters = "FIT CTU · Master's in Informatics (Sep 2026 – Present)";
+const bachelors = "FIT CTU · Bachelor's, AI specialization";
+const masters = "FIT CTU · Master's in Informatics";
 
 export const coursework: readonly Entry[] = [
   {

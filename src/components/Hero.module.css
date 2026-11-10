@@ -1,0 +1,84 @@
+.hero {
+  padding: 64px 0 32px;
+}
+
+.name {
+  margin-top: 6px;
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.intro {
+  max-width: 60ch;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 40px 0 0;
+}
+
+.fact {
+  padding: 20px 22px;
+  border-right: 1px solid var(--border);
+}
+
+.fact:last-child {
+  border-right: 0;
+}
+
+.factValue {
+  margin: 8px 0 2px;
+  font: 500 17px / 1.4 var(--heading);
+  letter-spacing: -0.2px;
+}
+
+.factNote {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 900px) {
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fact:nth-child(2) {
+    border-right: 0;
+  }
+
+  .fact:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 40px;
+  }
+
+  .actions > * {
+    flex: 1 1 100%;
+  }
+
+  .actions > :first-child {
+    justify-content: space-between;
+  }
+
+  .fact {
+    padding: 16px;
+  }
+}

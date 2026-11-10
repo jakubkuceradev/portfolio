@@ -1,15 +1,7 @@
-.section + .section {
-  margin-top: 3rem;
-}
-
-.title {
-  padding-bottom: 0.4rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid var(--rule);
-  font-size: 1.35rem;
+.section {
+  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
 .entries {
-  display: grid;
-  gap: 1.25rem;
+  border-top: 1px solid var(--border);
 }

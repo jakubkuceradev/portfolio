@@ -1,67 +1,78 @@
+.panel {
+  padding-bottom: 14px;
+}
+
 .heading {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 2rem;
-}
-
-.title {
-  font-size: 1.35rem;
-}
-
-.clear {
-  padding: 0.15rem 0.5rem;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--text-muted);
-  font: inherit;
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-
-.clear:hover {
-  color: var(--text);
-  background: var(--bg-raised);
+  position: relative;
+  padding-bottom: 14px;
 }
 
 .hint {
-  margin: 0.35rem 0 0;
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.clear {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+}
+
+.clear[hidden] {
+  display: block;
+  visibility: hidden;
 }
 
 .group {
-  margin-top: 1.25rem;
+  padding: 0 14px;
+}
+
+.group:last-of-type {
+  padding-bottom: 6px;
+}
+
+.group + .group {
+  margin-top: 10px;
 }
 
 .groupTitle {
-  margin-bottom: 0.4rem;
-  color: var(--text-muted);
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  margin: 0 0 4px;
+  padding: 0 10px;
+  font-size: 10.5px;
 }
 
-.list,
-.plainList {
-  margin: 0;
-  padding: 0;
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 10px;
   list-style: none;
 }
 
-.plainList {
-  font-size: 0.95rem;
+.skill {
+  display: block;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  transition:
+    background-color var(--fade) var(--ease),
+    border-color var(--fade) var(--ease),
+    color var(--fade) var(--ease);
 }
 
-/* Narrow screens: skills wrap as chips above the content. */
-@media (max-width: 56.24em) {
-  .list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
+.skill:hover,
+.skill[data-active] {
+  background: var(--highlight-bg);
+  border-color: var(--highlight-border);
+}
+
+.skill[aria-pressed='true'] {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  color: #fff;
 }
