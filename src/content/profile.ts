@@ -4,7 +4,7 @@ export const profile = {
   role: 'Software engineer · Prague, CZ',
   intro:
     'I build practical software, from robotics systems and AI applications to web products. Studying Informatics at FIT CTU and working at ententee.',
-  email: 'jakubkuceradev@gmail.com',
+  email: 'contact@jakubkucera.dev',
   links: [
     { label: 'GitHub', href: 'https://github.com/jakubkuceradev' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jakubkuceradev/' },
